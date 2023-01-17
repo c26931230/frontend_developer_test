@@ -1,0 +1,182 @@
+#video_box {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  height: calc(100vh - 2px);
+  top: 0;
+  border-radius: 0 0 50px 50px;
+  box-sizing: border-box;
+  margin-bottom: 70px;
+
+  // width: 90vw;
+  &::after {
+    content: "";
+    background-color: #00000030;
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  video {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+  }
+
+  .info_box {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    z-index: 9;
+    width: 70%;
+    text-align: center;
+    margin: 30px 0;
+
+    .logo {
+      width: 40%;
+      position: relative;
+      display: block;
+      margin: 0 auto;
+
+      img {
+        width: 100%;
+        vertical-align: top;
+      }
+
+    }
+
+    h2 {
+      padding: 20px 0;
+      color: $main_3;
+      font-weight: 700;
+      font-size: 28px;
+      line-height: 50px;
+      letter-spacing: 3.16667px;
+    }
+
+    .salad_box {
+      width: 100%;
+      text-align: center;
+      margin-top: 60px;
+
+      img {
+        width: 50px;
+      }
+
+      p {
+        color: $main_3;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 17px;
+        padding: 10px 0;
+        letter-spacing: 2px;
+      }
+    }
+  }
+
+  .deco_box {
+    p {
+      writing-mode: vertical-rl;
+      color: $main_3;
+      font-size: 16px;
+      z-index: 8;
+      position: absolute;
+      transform: translateY(-50%);
+      top: 65%;
+      left: 0%;
+      white-space: nowrap;
+      padding: 0 10px;
+
+      &::after {
+        content: "";
+        background-color: $main_3;
+        position: absolute;
+        display: block;
+        transform: translateX(-50%);
+        left: 50%;
+        top: 110%;
+        width: 2px;
+        height: 70%;
+      }
+    }
+  }
+}
+
+@media screen and (min-width:768px) {
+  #video_box {
+    .info_box {
+      text-align: left;
+      width: 90%;
+
+      .logo {
+        width: 150px;
+        margin: 0;
+      }
+
+      h2 {
+        font-weight: 700;
+        font-size: 38px;
+        line-height: 70px;
+        letter-spacing: 9.16667px;
+      }
+    }
+
+    .deco_box {
+      p {
+        top: 50%;
+      }
+    }
+  }
+}
+
+// about
+#about {
+  h3 {
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 34px;
+    letter-spacing: 3.63636px;
+    color: #262626;
+    text-align: center;
+    margin-bottom: 71px;
+    position: relative;
+    width: fit-content;
+    margin: 0 auto;
+    &:after{
+      content: "#ABOUT DIGISALAD";
+      white-space: nowrap;
+      width: 100%;
+      display: block;
+      position:absolute;
+      top: 10px;
+      left: 0px;
+      margin: 0 auto;
+      color: transparent;
+      text-decoration: underline wavy $main_1 4px;
+    }
+    &:before{
+      content: "";
+      position:absolute;
+      transform: translateY(-50%);
+      top: 50%;
+      right: -20px;
+      height: 10px;
+      width: 10px;
+      border-radius: 50px;
+      background-color: #EE6C8A;
+    }
+  }
+  .video_box{
+    width: 80%;
+    margin: 70px auto;
+    video{
+      width: 100%;
+    }
+  }
+}
