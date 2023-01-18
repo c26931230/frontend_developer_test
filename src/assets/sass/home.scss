@@ -1,3 +1,4 @@
+// ===banner video===
 #video_box {
   overflow: hidden;
   width: 100%;
@@ -8,7 +9,6 @@
   box-sizing: border-box;
   margin-bottom: 70px;
 
-  // width: 90vw;
   &::after {
     content: "";
     background-color: #00000030;
@@ -21,18 +21,13 @@
   }
 
   video {
-    position: absolute;
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
+    @include center();
     min-width: 100%;
   }
 
   .info_box {
-    position: absolute;
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
+    @include center();
+    @include maxWidth();
     z-index: 9;
     width: 70%;
     text-align: center;
@@ -139,59 +134,55 @@
 #about {
   z-index: 9;
   position: relative;
-
-  h3 {
-    @include h3('#ABOUT DIGISALAD', $main_4, $main_5)
-  }
-
-  .video_box {
-    width: 80%;
-    margin: 70px auto 0;
-    position: relative;
-
-    video {
-      width: 100%;
-      cursor: pointer;
-      // border: transparent 1px solid;
+  .wrapper{
+    @include maxWidth();
+    h3 {
+      @include h3('#ABOUT DIGISALAD', $main_4, $main_5)
     }
-
-    .icon_box {
-
-      .fa-circle-play,
-      .fa-circle-pause {
-        color: $main_5;
-        font-size: 60px;
-        position: absolute;
-        transform: translate(-50%, -50%);
-        top: 50%;
-        left: 50%;
+  
+    .video_box {
+      width: 80%;
+      margin: 70px auto 0;
+      position: relative;
+  
+      video {
+        width: 100%;
+        cursor: pointer;
+      }
+  
+      .icon_box {
+  
+        .fa-circle-play,
+        .fa-circle-pause {
+          color: $main_5;
+          font-size: 60px;
+          @include center();
+        }
+      }
+  
+      .icon_box.active {
+        .fa-circle-pause {
+          animation: pauseAnimation .5s;
+          animation-iteration-count: 1;
+          animation-fill-mode: forwards;
+        }
       }
     }
-
-    .icon_box.active {
-      .fa-circle-pause {
-        animation: pauseAnimation .5s;
-        animation-iteration-count: 1;
-        animation-fill-mode: forwards;
-      }
+  
+    .txt {
+      width: 80%;
+      margin: 30px auto;
+      color: $main_4;
+      text-align: center;
+      @include text();
+  
+    }
+  
+    .btn {
+      @include btn_rectangle($main_5, $main_3)
     }
   }
-
-  .txt {
-    width: 80%;
-    margin: 30px auto;
-    color: $main_4;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 28px;
-    text-align: center;
-    letter-spacing: 1px;
-
-  }
-
-  .btn {
-    @include btn_rectangle($main_5, $main_3)
-  }
+  
 }
 
 @keyframes pauseAnimation {
@@ -224,25 +215,25 @@
 }
 
 .main_box {
-  // border: 5px solid green;
   margin-top: 100px; //***暫時
 }
 
 // ===award_box===
 #award_box {
   position: relative;
-  // height: 1000px;
   transform: translateY(50%);
-  // border: 5px solid red;
-  width: 90%;
-  margin-left: auto;
   margin-bottom: 50px;
-
+  // border: 1px solid red;
+  max-width: 1440px;
+  margin: 0 auto;
   .wrapper {
+    width: 90%;
+    margin-left: auto;
+    // max-width: 1200px;
     background-color: $main_3;
     padding: 30px;
     border-radius: 50px 0 50px 50px;
-
+    
     .txt_box {
       h3 {
         @include h3('#AWARDS', $main_4, $main_5)
@@ -271,7 +262,6 @@
 @media screen and (min-width:768px) {
   #award_box {
     .wrapper {
-      width: 90%;
       margin-left: auto;
 
       .img_box {
@@ -286,8 +276,7 @@
 @media screen and (min-width:1024px) {
   #award_box {
     .wrapper {
-      display: flex;
-      flex-wrap: wrap;
+      @include flex();
       align-items: center;
 
       .txt_box {
@@ -310,15 +299,15 @@
 // ===ingradients===
 #ingradients {
   background-color: $main_5;
-  padding-bottom: 50px;
   border-radius: 50px 0 50px 0;
 
   .wrapper {
     width: 80%;
-    margin: 0 auto;
-
+    margin: 0 auto 1000px;
+    @include maxWidth();
     .title_box {
       margin-bottom: 85px;
+      margin-top: 100px;
 
       h3 {
         @include h3('#OUR INGRADIENTS', $main_3, $main_6);
@@ -340,16 +329,14 @@
   }
 
   .ingradients_box {
-    display: flex;
-    flex-wrap: wrap;
+    @include flex();
     justify-content: space-between;
     color: $main_3;
-    margin-bottom: 100px;
+    // margin-bottom: 100px;
 
     .item {
       width: 100%;
-      display: flex;
-      flex-wrap: wrap;
+      @include flex();
       flex-direction: column;
       align-items: center;
       justify-content: space-evenly;
@@ -383,13 +370,13 @@
         display: block;
         outline: none;
         background-color: transparent;
-        padding: 20px 35px;
+        padding: 15px 25px;
         color: $main_3;
         border: 2px solid $main_3;
         border-radius: 30px;
         font-weight: 700;
         font-size: 14px;
-        letter-spacing: 2.22222px;
+        letter-spacing: 2.22px;
         cursor: pointer;
       }
     }
@@ -408,7 +395,7 @@
     z-index: 2;
     position: relative;
     text-align: center;
-
+    margin-bottom: 100px;
     &::before {
       content: "#VIEW MORE DIGISALAD’S INGRADIENTS#";
       position: absolute;
@@ -441,12 +428,14 @@
 
 @media screen and (min-width:768px) {
   #ingradients {
-    padding-bottom: 250px;
 
     .wrapper {
       .ingradients_box {
         .item {
           width: 48%;
+          button{
+            padding: 20px 35px;
+          }
         }
       }
     }
@@ -456,12 +445,127 @@
 @media screen and (min-width:1024px) {
   #ingradients {
     .wrapper {
-
-      // .title_box{}
       .ingradients_box {
         .item {
           width: 33.33%;
         }
+      }
+    }
+  }
+}
+
+// === quote_box ===
+#quote_box {
+  margin-top: 50px;
+  max-width: 1440px;
+  margin: 0 auto;
+  background-color: $main_3;
+  width: 100%;
+  .wrapper {
+    border-radius: 0 50px 50px 50px;
+    width: 90%;
+    background-image: linear-gradient(0deg, rgba(88, 88, 128, 0.8), rgba(88, 88, 128, 0.8)),url(../assets/img/quote_bg.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding:30px;
+    transform: translateY(-50%);
+    .img_box {
+      text-align: center;
+      position: relative;
+      color: $main_3;
+      margin-bottom: 30px;
+      img {
+        width: 50%;
+        max-width: 100px;
+        display: block;
+        margin: 0 auto 10px;
+        max-width: 150px;
+      }
+
+      h3 {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 24px;
+        letter-spacing: 2px;
+        margin-bottom: 8px;
+      }
+
+      p {
+        font-size: 16px;
+        line-height: 16px;
+        letter-spacing: 2px;
+      }
+    }
+
+    .txt_box {
+      position: relative;
+      img {
+        width: 12%;
+        display: block;
+        margin: 0 auto;
+      }
+
+      p {
+        font-size: 16px;
+        line-height: 30px;
+        letter-spacing: 2px;
+        color: $main_3;
+        strong{
+          font-weight: 700;
+          color: $main_7;
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width:1024px) {
+  #quote_box {
+    .wrapper {
+      @include flex();
+      align-items: center;
+      justify-content: space-between;
+      padding: 83px 101px;
+      .img_box {
+        width: 40%;
+        img {
+          margin: 0 auto 39px;
+        }
+      }
+  
+      .txt_box {
+        width: 60%;
+  
+        p {
+          font-size: 22px;
+          line-height: 48px;
+        }
+      }
+    }
+  }
+}
+
+.main_box2{
+  background-color: $main_3;
+  // border: 1px solid red;
+  #experience_box{
+    @include maxWidth();
+    .wrapper{
+      width: 80%;
+      margin: 0 auto;
+      // border: 1px solid red;
+      h3{
+        @include h3('#OUR BRAND EXPERIENCE#',$main_4,$main_5);
+        margin-bottom: 58px;
+      }
+      p{
+        @include text(24px);
+        color: $main_4;
+        text-align: center;
+        margin-bottom: 36px;
+      }
+      img{
+        width: 100%;
       }
     }
   }

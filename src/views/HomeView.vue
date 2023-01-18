@@ -21,29 +21,31 @@
     </div>
   </section>
   <section id="about">
-    <h3>ABOUT DIGISALAD</h3>
-    <div class="video_box" @click="play">
-      <video id="myMovie" width="640" poster="../assets/img/video_thumbnail.png">
-        <source src="../assets/video/DigiSalad.mp4">
-      </video>
-      <div class="icon_box" v-show="isPlay == false">
-        <i class="fa-solid fa-circle-play"></i>
+    <div class="wrapper">
+      <h3>ABOUT DIGISALAD</h3>
+      <div class="video_box" @click="play">
+        <video id="myMovie" width="640" poster="../assets/img/video_thumbnail.png">
+          <source src="../assets/video/DigiSalad.mp4">
+        </video>
+        <div class="icon_box" v-show="isPlay == false">
+          <i class="fa-solid fa-circle-play"></i>
+        </div>
+        <div class="icon_box" v-show="isPlay" ref="pauseBtn">
+          <i class="fa-solid fa-circle-pause"></i>
+        </div>
       </div>
-      <div class="icon_box" v-show="isPlay" ref="pauseBtn">
-        <i class="fa-solid fa-circle-pause"></i>
-      </div>
+      <p class="txt">Cras quis nulla commodo, aliquam lectus sed, blandit augue. Cras ullamcorper bibendum bibendum. Duis
+        tincidunt urna non pretium porta. Nam condimentum vitae ligula vel ornare. Phasellus at semper turpis. Nunc eu
+        tellus tortor. Etiam at condimentum nisl, vitae sagittis orci. Donec id dignissim nunc. Donec elit ante, eleifend
+        a dolor et, venenatis facilisis dolor. In feugiat orci odio, sed lacinia sem elementum quis. Aliquam consectetur,
+        eros et vulputate euismod, nunc leo tempor lacus, ac rhoncus neque eros nec lacus. Cras lobortis molestie
+        faucibus.</p>
+      <router-link class="btn" to="/">View More <span>——</span></router-link>
     </div>
-    <p class="txt">Cras quis nulla commodo, aliquam lectus sed, blandit augue. Cras ullamcorper bibendum bibendum. Duis
-      tincidunt urna non pretium porta. Nam condimentum vitae ligula vel ornare. Phasellus at semper turpis. Nunc eu
-      tellus tortor. Etiam at condimentum nisl, vitae sagittis orci. Donec id dignissim nunc. Donec elit ante, eleifend
-      a dolor et, venenatis facilisis dolor. In feugiat orci odio, sed lacinia sem elementum quis. Aliquam consectetur,
-      eros et vulputate euismod, nunc leo tempor lacus, ac rhoncus neque eros nec lacus. Cras lobortis molestie
-      faucibus.</p>
-    <router-link class="btn" to="/">View More <span>——</span></router-link>
   </section>
   <div class="main_box" :style="{
     transform: `translateY(${-halfAwardBox}px)`
-  }">
+  }" ref="main_box">
     <!-- AWARDS -->
     <section id="award_box" ref="award_box">
       <div class="wrapper">
@@ -60,7 +62,9 @@
     </section>
     <!-- OUR INGRADIENTS -->
     <section id="ingradients" :style="{
-      'padding-top': halfAwardBox + 'px'
+      'padding-top': halfAwardBox + 'px',
+      'padding-bottom': halfQuoteBox + 'px',
+
     }">
       <div class="wrapper">
         <div class="title_box">
@@ -90,8 +94,29 @@
       </div>
     </section>
     <!-- quote -->
-    <section id="quote_box">
-
+    <section id="quote_box"  ref="quote_box">
+      <div class="wrapper">
+        <div class="img_box">
+          <img src="../assets/img/founder.png" alt="Tony Ng">
+          <h3>TONY NG</h3>
+          <p><i>Founder & Creative Director</i></p>
+        </div>
+        <div class="txt_box">
+          <img src="../assets/img/quote_icon.png" alt="quote">
+          <p>A great digital work isn’t about designing beautiful pages purely. It is about context - how do we deliver the <strong> experience to the right person at the right time.</strong>The most important thing is that your work can engage customers at anytime, anywhere and let users experience an entire amazing digital journey.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="main_box2" :style="{
+    transform: `translateY(${-halfQuoteBox * 1.5}px)`
+  }">
+    <section id="experience_box">
+      <div class="wrapper">
+        <h3>OUR BRAND EXPERIENCE</h3>
+        <p>Cras quis nulla commodo, aliquam lectus sed, blandit augue. Cras ullamcorper bibendum bibendum. Duis tincidunt urna non pretium porta. Nam condimentum vitae ligula vel ornare. Phasellus at semper turpis. Nunc eu tellus tortor. Etiam at condimentum nisl, vitae sagittis orci. Donec id dignissim nunc. Donec elit ante, eleifend a dolor et, venenatis facilisis dolor. In feugiat orci odio, sed lacinia sem elementum quis. Aliquam consectetur, eros et vulputate euismod, nunc leo tempor lacus, ac rhoncus neque eros nec lacus. Cras lobortis molestie faucibus.</p>
+        <img src="../assets/img/ClientList.png" alt="DigiSalad Client List">
+      </div>
     </section>
   </div>
 </template>
@@ -103,6 +128,7 @@ export default {
     return {
       isPlay: false,
       halfAwardBox: '',
+      halfQuoteBox: '',
       ingredients: [
         {
           id: 1,
@@ -176,24 +202,36 @@ export default {
       }
     },
     traslate() {
-      let award_boxHeight = this.$refs.award_box.clientHeight;
-      this.halfAwardBox = award_boxHeight / 2;
+      let awardBoxHeight = this.$refs.award_box.clientHeight;
+      let quoteBoxHeight = this.$refs.quote_box.clientHeight;
+      this.halfAwardBox = awardBoxHeight / 2;
+      this.halfQuoteBox = quoteBoxHeight / 2;
+      // console.log(quoteBoxHeight);
+    },
+    changeBg(){
+      let mainBoxTop = this.$refs.main_box.offsetTop;
+      if(window.scrollY >= mainBoxTop *1.2){
+         document.body.style.backgroundColor = '#FFF';
+      }else{
+        document.body.style.backgroundColor = '#F5F5F5';
+      }
     }
   },
   mounted() {
     const self = this;
     window.addEventListener("scroll", function () {
-      self.windowScroll()
+      self.windowScroll();
+      self.changeBg();
+      
     })
     window.addEventListener("resize", function () {
-      self.traslate()
+      self.traslate();
     })
-    this.traslate()
-    this.windowScroll()
+    this.traslate();
+    this.windowScroll();
+    // this.changeBg(); 
   },
-  beforeDestroy() {
-    window.removeEventListener('scroll', this.handleScroll);
-  },
+
 
 }
 </script>
