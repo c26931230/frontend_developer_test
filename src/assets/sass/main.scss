@@ -1,11 +1,96 @@
 @import "reset";
-$main_1:#4EE5EA;
-$main_2:#26D0A8;
-$main_3:#fff;
-$main_4:#262626;
-*{
+$main_1: #4EE5EA;
+$main_2: #26D0A8;
+$main_3: #fff;
+$main_4: #262626;
+$main_5: #26C6D0;
+$main_6: #585880;
+$main_7: #FFBC58;
+;
+
+* {
     box-sizing: border-box;
 }
-a{
+
+body {
+    background-color: #F5F5F5;
+}
+
+a {
     text-decoration: none;
+}
+
+
+
+@mixin btn_rectangle($bgColor, $textColor) {
+    background-color: $bgColor;
+    padding: 20px 15px;
+    color: $textColor;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 2.22222px;
+    margin: 0 auto;
+    display: block;
+    width: fit-content;
+    cursor: pointer;
+    span {
+        letter-spacing: 0;
+        margin-left: 14px;
+    }
+
+    @media screen and (min-width:768px) {
+        padding: 30px 24px;
+        color: $main_3;
+        font-size: 16px;
+    }
+}
+
+@mixin h3($str, $textColor, $wavyColor) {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 34px;
+    letter-spacing: 3.63636px;
+    color: $textColor;
+    text-align: center;
+    margin-bottom: 71px;
+    position: relative;
+    width: fit-content;
+    margin: 0 auto;
+
+    &:after {
+        content: "#{$str}";
+        white-space: nowrap;
+        width: 100%;
+        display: block;
+        position: absolute;
+        top: 10px;
+        left: 0px;
+        margin: 0 auto;
+        color: transparent;
+        text-decoration: underline wavy $wavyColor 4px;
+    }
+
+    &:before {
+        content: "";
+        position: absolute;
+        transform: translateY(-50%);
+        top: 50%;
+        right: -20px;
+        height: 10px;
+        width: 10px;
+        border-radius: 50px;
+        background-color: #EE6C8A;
+    }
+
+    @media screen and (min-width:768px) {
+        h3 {
+            font-size: 28px;
+        }
+    }
+}
+
+@mixin text(){
+    font-size: 16px;
+    line-height: 28px;
+    letter-spacing: 1px;
 }
