@@ -134,24 +134,26 @@
 #about {
   z-index: 9;
   position: relative;
-  .wrapper{
+
+  .wrapper {
     @include maxWidth();
+
     h3 {
       @include h3('#ABOUT DIGISALAD', $main_4, $main_5)
     }
-  
+
     .video_box {
       width: 80%;
       margin: 70px auto 0;
       position: relative;
-  
+
       video {
         width: 100%;
         cursor: pointer;
       }
-  
+
       .icon_box {
-  
+
         .fa-circle-play,
         .fa-circle-pause {
           color: $main_5;
@@ -159,7 +161,7 @@
           @include center();
         }
       }
-  
+
       .icon_box.active {
         .fa-circle-pause {
           animation: pauseAnimation .5s;
@@ -168,21 +170,21 @@
         }
       }
     }
-  
+
     .txt {
       width: 80%;
       margin: 30px auto;
       color: $main_4;
       text-align: center;
       @include text();
-  
+
     }
-  
+
     .btn {
-      @include btn_rectangle($main_5, $main_3)
+      @include btn_rectangle()
     }
   }
-  
+
 }
 
 @keyframes pauseAnimation {
@@ -223,9 +225,9 @@
   position: relative;
   transform: translateY(50%);
   margin-bottom: 50px;
-  // border: 1px solid red;
   max-width: 1440px;
   margin: 0 auto;
+
   .wrapper {
     width: 90%;
     margin-left: auto;
@@ -233,7 +235,7 @@
     background-color: $main_3;
     padding: 30px;
     border-radius: 50px 0 50px 50px;
-    
+
     .txt_box {
       h3 {
         @include h3('#AWARDS', $main_4, $main_5)
@@ -305,6 +307,7 @@
     width: 80%;
     margin: 0 auto 1000px;
     @include maxWidth();
+
     .title_box {
       margin-bottom: 85px;
       margin-top: 100px;
@@ -372,7 +375,6 @@
         background-color: transparent;
         padding: 15px 25px;
         color: $main_3;
-        border: 2px solid $main_3;
         border-radius: 30px;
         font-weight: 700;
         font-size: 14px;
@@ -396,6 +398,7 @@
     position: relative;
     text-align: center;
     margin-bottom: 100px;
+
     &::before {
       content: "#VIEW MORE DIGISALAD’S INGRADIENTS#";
       position: absolute;
@@ -433,7 +436,8 @@
       .ingradients_box {
         .item {
           width: 48%;
-          button{
+
+          button {
             padding: 20px 35px;
           }
         }
@@ -461,20 +465,23 @@
   margin: 0 auto;
   background-color: $main_3;
   width: 100%;
+
   .wrapper {
     border-radius: 0 50px 50px 50px;
     width: 90%;
-    background-image: linear-gradient(0deg, rgba(88, 88, 128, 0.8), rgba(88, 88, 128, 0.8)),url(../assets/img/quote_bg.png);
+    background-image: linear-gradient(0deg, rgba(88, 88, 128, 0.8), rgba(88, 88, 128, 0.8)), url(../assets/img/quote_bg.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    padding:30px;
+    padding: 30px;
     transform: translateY(-50%);
+
     .img_box {
       text-align: center;
       position: relative;
       color: $main_3;
       margin-bottom: 30px;
+
       img {
         width: 50%;
         max-width: 100px;
@@ -500,6 +507,7 @@
 
     .txt_box {
       position: relative;
+
       img {
         width: 12%;
         display: block;
@@ -511,7 +519,8 @@
         line-height: 30px;
         letter-spacing: 2px;
         color: $main_3;
-        strong{
+
+        strong {
           font-weight: 700;
           color: $main_7;
         }
@@ -519,6 +528,7 @@
     }
   }
 }
+
 @media screen and (min-width:1024px) {
   #quote_box {
     .wrapper {
@@ -526,16 +536,18 @@
       align-items: center;
       justify-content: space-between;
       padding: 83px 101px;
+
       .img_box {
         width: 40%;
+
         img {
           margin: 0 auto 39px;
         }
       }
-  
+
       .txt_box {
         width: 60%;
-  
+
         p {
           font-size: 22px;
           line-height: 48px;
@@ -545,27 +557,271 @@
   }
 }
 
-.main_box2{
+.main_box2 {
   background-color: $main_3;
-  // border: 1px solid red;
-  #experience_box{
+
+  #experience_box {
     @include maxWidth();
-    .wrapper{
+
+    .wrapper {
       width: 80%;
       margin: 0 auto;
-      // border: 1px solid red;
-      h3{
-        @include h3('#OUR BRAND EXPERIENCE#',$main_4,$main_5);
+
+      h3 {
+        @include h3('#OUR BRAND EXPERIENCE#', $main_4, $main_5);
         margin-bottom: 58px;
       }
-      p{
+
+      p {
         @include text(24px);
         color: $main_4;
         text-align: center;
         margin-bottom: 36px;
       }
-      img{
+
+      img {
         width: 100%;
+      }
+    }
+  }
+}
+
+// ===club===
+// #club_box{
+//   .slider_box{
+//     .wrapper{
+//       .item{
+//         .img_box{}
+//         .txt_box{
+//           h4{}
+//           h3{}
+//           p{}
+//         }
+//       }
+//     }
+//   }
+// }
+
+#club_box {
+  overflow: hidden;
+  padding: 100px 0;
+  position: relative;
+  z-index: 9;
+  // .num_box{
+  //   width: 54px;
+  //   height: 54px;
+  //   border: 1px solid red;
+  // }
+  .num_box {
+    // border: 1px solid red;
+    color: $main_3;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 2.22222px;
+    width: 54px;
+    height: 54px;
+    position: relative;
+    // margin-left: auto;
+    position: absolute;
+    transform: translateX(-50%);
+    left: 90%;
+    top: 10%;
+    span{
+      position:absolute;
+      &:nth-child(1){
+        top: 0;
+        left: 0;
+      }
+      &:nth-child(2){//line
+        height: 1px;
+        width: 105%;
+        background-color: $main_5;
+        display: block;
+        transform: rotate(-45deg);
+        top: 50%;
+      }
+      &:nth-child(3){
+        bottom: 0;
+        right: 0;
+      }
+    }
+  }
+
+  &:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: -1;
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(../assets/img/club_bg.png);
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    filter: blur(10px);
+  }
+
+  .ctr_box {
+    width: 90%;
+    @include center();
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    button {
+      background-color: transparent;
+      border: none;
+    }
+
+    img {
+      cursor: pointer;
+    }
+  }
+
+  .slider_box {
+    transition: 1s;
+    @include maxWidth();
+    border: 1px solid red;
+
+    .wrapper {
+      width: 400%;
+      display: flex;
+
+      .item {
+        @include flex();
+        display: inline-block;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 0;
+        margin: 0 auto;
+
+        .img_box {
+          width: 100%;
+          position: relative;
+          padding: 30px;
+          margin-bottom: 30px;
+
+          img {
+            // vertical-align: top;
+            width: 100%;
+            border-radius: 50px;
+            display: block;
+            margin: 0 auto 30px;
+          }
+
+          .btn {
+            @include btn_rectangle();
+            // position: absolute;
+            // bottom: -5%;
+            // right: -5%;
+          }
+        }
+
+        .txt_box {
+          width: 100%;
+          padding: 30px;
+          text-align: center;
+          order: -1;
+
+          h4 {
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 19px;
+            letter-spacing: 2.22222px;
+            color: $main_3;
+            margin-bottom: 20px;
+          }
+
+          h3 {
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 34px;
+            letter-spacing: 3.63636px;
+            position: relative;
+            width: fit-content;
+            margin: 0 auto 40px;
+            color: $main_3;
+            display: block;
+            z-index: 3;
+
+            &::after {
+              content: "";
+              height: 6px;
+              background-color: $main_5;
+              position: absolute;
+              display: block;
+              width: 104%;
+              left: -2%;
+              bottom: 6px;
+              z-index: -1;
+            }
+          }
+
+          p {
+            @include text(24px);
+            color: $main_3;
+            // width: 80%;
+            margin: 0 auto;
+          }
+        }
+
+      }
+    }
+  }
+}
+
+@media screen and (min-width:768px) {
+  #club_box {
+    .ctr_box {
+      @include maxWidth(1500px);
+
+      img {
+        display: block;
+        z-index: 1000;
+      }
+    }
+
+    .slider_box {
+      .wrapper {
+        .item {
+          width: 90%;
+          @include maxWidth();
+          display: flex;
+          flex-wrap: wrap;
+
+          .img_box {
+            width: 40%;
+            margin-bottom: 0;
+
+            img {
+              margin-bottom: 0;
+            }
+
+            .btn {
+              position: absolute;
+              bottom: -5%;
+              right: -5%;
+            }
+          }
+
+          .txt_box {
+            width: 50%;
+            order: 1;
+            text-align: left;
+            padding: 30px 60px 30px 30px;
+
+            // h4{}
+            h3 {
+              margin-left: 0;
+            }
+
+            // p{}
+          }
+
+        }
       }
     }
   }

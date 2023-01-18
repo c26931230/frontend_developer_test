@@ -23,7 +23,7 @@ a {
 
 
 
-@mixin btn_rectangle($bgColor, $textColor) {
+@mixin btn_rectangle($bgColor:$main_5, $textColor:$main_3) {
     background-color: $bgColor;
     padding: 20px 15px;
     color: $textColor;
@@ -40,7 +40,8 @@ a {
     }
 
     @media screen and (min-width:768px) {
-        padding: 30px 24px;
+        // padding: 30px 24px;
+        padding: 60px 30px;
         color: $main_3;
         font-size: 16px;
     }
@@ -105,7 +106,14 @@ a {
     display: flex;
     flex-wrap: wrap;
 }
-@mixin maxWidth(){
-    max-width: 1440px;
+@mixin maxWidth($maxWidth:1440px){
+    max-width: $maxWidth;
     margin: 0 auto;
+}
+
+@mixin bgImage(){
+    background-image: linear-gradient(0deg, rgba(88, 88, 128, 0.8), rgba(88, 88, 128, 0.8)),url(../assets/img/quote_bg.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
