@@ -10,11 +10,11 @@ $main_7: #FFBC58;
 
 * {
     box-sizing: border-box;
+    font-family: "proxima-nova" !important;
 }
 
 body {
     background-color: #F5F5F5;
-    // background-color: #Fff;
 }
 
 a {
@@ -23,7 +23,7 @@ a {
 
 
 
-@mixin btn_rectangle($bgColor:$main_5, $textColor:$main_3) {
+@mixin btn_rectangle($bgColor:$main_5, $textColor:$main_3,$size:'normal') {
     background-color: $bgColor;
     padding: 20px 15px;
     color: $textColor;
@@ -40,8 +40,11 @@ a {
     }
 
     @media screen and (min-width:768px) {
-        // padding: 30px 24px;
-        padding: 60px 30px;
+        @if ($size == 'large'){
+            padding: 60px 30px;
+        }@else {
+            padding: 30px 24px;
+          }
         color: $main_3;
         font-size: 16px;
     }
@@ -58,7 +61,7 @@ a {
     position: relative;
     width: fit-content;
     margin: 0 auto;
-
+    white-space: nowrap;
     &:after {
         content: "#{$str}";
         white-space: nowrap;
@@ -112,8 +115,17 @@ a {
 }
 
 @mixin bgImage(){
-    background-image: linear-gradient(0deg, rgba(88, 88, 128, 0.8), rgba(88, 88, 128, 0.8)),url(../assets/img/quote_bg.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+@mixin pseudo(){
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    display: block;
 }

@@ -1,7 +1,7 @@
 <template>
-    <header id="header" ref="header">
+    <header id="header" ref="header" v-show="$store.state.isMenuOpen == false">
         <div class="holder" ref="holder" :style="{
-            backgroundColor: $store.state.isActive ? 'white' : 'transparent'
+            backgroundColor: $store.state.isActive ? '#ffffff90' : 'transparent'
         }">
             <div class="wrapper">
                 <a href="#" class="logo">
@@ -9,7 +9,7 @@
                 </a>
                 <div class="function_box">
                     <a href="#" class="btn_1">START YOUR PROJECT</a>
-                    <div class="toggle">
+                    <div class="toggle" @click="openMenu">
                         <span v-for="i in 3" :style="{
                             backgroundColor: $store.state.isActive ? '#585880' : 'white'
                         }"></span>
@@ -19,32 +19,24 @@
 
         </div>
     </header>
-    <nav class="SideMenu">
-        <ul>
-            <li>
-                <a href="#">
-                    <div>
-                        <p>EMPOWERING BRANDS</p>
-                        <p>ABOUT US</p>
-                    </div>
-                </a>
-            </li>
-            <!-- <li>ABOUT US</li> -->
-            <li>CAREERS</li>
-            <li>SERVICES</li>
-            <li>WORKS</li>
-            <li>INSIGHT</li>
-            <li>CONTACT</li>
-        </ul>
-    </nav>
+    <MyMenu/>
 </template>
 
 <script>
+// import ListItem from '@/components/ListItem.vue'
+import MyMenu from '@/components/MyMenu.vue'
 export default {
-    name: 'Header',
+    name: 'MyHeader',
+    components: {MyMenu},
     data() {
         return {
             isActive: false,
+        }
+    },
+    methods:{
+        openMenu(){
+            this.$store.state.isMenuOpen = true
+            console.log(this.$store.state.isMenuOpen);
         }
     },
     mounted() {
@@ -56,5 +48,5 @@ export default {
 <style scoped lang="scss">
 @import "@/assets/sass/header.scss";
 
-//
+
 </style>

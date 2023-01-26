@@ -1,14 +1,14 @@
 <template>
-  <Header/>
+  <MyHeader/>
   <router-view/>
  
 </template>
 <script>
-import Header from '@/components/Header.vue'
+import MyHeader from '@/components/MyHeader.vue'
 export default {
   name: 'HomeView',
   components: {
-    Header
+    MyHeader
   }
 }
 </script>
