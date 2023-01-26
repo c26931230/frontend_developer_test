@@ -159,10 +159,8 @@ export default {
           width: 100%;
           position: relative;
           padding: 30px;
-          // margin-bottom: 30px;
 
           img {
-            // vertical-align: top;
             width: 70%;
             border-radius: 50px;
             display: block;
@@ -219,6 +217,8 @@ export default {
             color: $main_3;
             // width: 80%;
             margin: 0 auto;
+            border: 1px solid red;
+            display: none;
           }
         }
 
@@ -272,7 +272,9 @@ export default {
               margin-left: 0;
             }
 
-            // p{}
+            p{
+              display: block;
+            }
           }
 
         }

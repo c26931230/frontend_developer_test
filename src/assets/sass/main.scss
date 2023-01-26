@@ -21,7 +21,20 @@ a {
     text-decoration: none;
 }
 
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 1s;
+}
 
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-to,
+.fade-leave-from {
+  opacity: 1;
+}
 
 @mixin btn_rectangle($bgColor:$main_5, $textColor:$main_3,$size:'normal') {
     background-color: $bgColor;
@@ -49,7 +62,35 @@ a {
         font-size: 16px;
     }
 }
-
+@mixin decoWavy($textColor:$main_4,$wavyColor:$main_5){
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 34px;
+    letter-spacing: 3.63636px;
+    color: $textColor;
+    text-align: center;
+    // margin-bottom: 71px;
+    position: relative;
+    width: fit-content;
+    margin: 0 auto;
+    white-space: nowrap;
+    text-decoration-style: wavy;
+    text-decoration-line: underline;
+    text-decoration-thickness: 3px;
+    text-decoration-color: $wavyColor;
+    text-underline-offset: 10px;
+    &:before {
+        content: "";
+        position: absolute;
+        transform: translateY(-50%);
+        top: 50%;
+        right: 5px;
+        height: 10px;
+        width: 10px;
+        border-radius: 50px;
+        background-color: #EE6C8A;
+    }
+}
 @mixin h3($str, $textColor, $wavyColor) {
     font-weight: 700;
     font-size: 20px;

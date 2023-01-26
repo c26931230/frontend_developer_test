@@ -1,13 +1,13 @@
 <template>
   <!-- quote -->
-  <section id="quote_box" ref="quote_box">
+  <section id="quote_box" ref="quote_box" >
       <div class="wrapper">
-        <div class="img_box">
+        <div class="img_box" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="-400">
           <img src="../assets/img/founder.png" alt="Tony Ng" >
           <h3>TONY NG</h3>
           <p><i>Founder & Creative Director</i></p>
         </div>
-        <div class="txt_box">
+        <div class="txt_box" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="-400">
           <img src="../assets/img/quote_icon.png" alt="quote">
           <p>A great digital work isn’t about designing beautiful pages purely. It is about context - how do we deliver
             the <strong> experience to the right person at the right time.</strong>The most important thing is that your

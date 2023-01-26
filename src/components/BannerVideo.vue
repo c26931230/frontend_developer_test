@@ -11,7 +11,7 @@
         AMAZING<br>
         DIGITAL EXPERIENCES
       </h2>
-      <div class="salad_box">
+      <div class="salad_box" data-aos="fade-down" data-aos-offset="-300" data-aos-duration="1000">
         <img src="@/assets/img/salad.png" alt="salad">
         <p>TASTE US NOW!</p>
       </div>
@@ -24,14 +24,6 @@
 <script>
 export default {
     name: 'BannerVideo',
-    data() {
-        return {
-            
-        }
-    },
-    mounted() {
-    },
-
 }
 </script>
 <style lang="scss" scoped>
@@ -44,7 +36,7 @@ export default {
   top: 0;
   border-radius: 0 0 50px 50px;
   box-sizing: border-box;
-  margin-bottom: 70px;
+  // margin-bottom: 70px;
 
   &::after {
     content: "";
@@ -113,25 +105,21 @@ export default {
         line-height: 17px;
         padding: 10px 0;
         letter-spacing: 2px;
-        // border: 1px solid red;
-        // position: relative;
-        // width: fit-content;
-        // margin: 0 auto;
-        // &:after{
-        //   content: "";
-        //   position:absolute;
-        //   display: block;
-        //   top: 500%;
-        //   left: 0;
-        //   height: 1px;
-        //   width: 200%;
-        //   background-color: #808080;
-        //   // transform: rotate(90deg);
-        //   position: absolute;
-        //   transform: translateX(-50%) rotate(90deg);
-        //   top: 50%;
-        //   left: 50%;
-        // }
+        position: relative;
+        width: fit-content;
+        margin: 0 auto;
+        &:after{
+          content: "";
+          position:absolute;
+          display: block;
+          height: 300px;
+          width: 1px;
+          background-color: $main_3;
+          position: absolute;
+          transform: translateX(-50%);
+          top: calc(100% + 20px);
+          left: 50%;
+        }
       }
     }
   }

@@ -1,5 +1,5 @@
 <template>
-    <transition>
+    <transition name="fade">
         <nav id="menu" v-show="$store.state.isMenuOpen == true">
             <div class="wrapper">
                 <div class="function_box">
@@ -57,18 +57,6 @@ export default {
 }
 </script>
 <style lang="scss">
-
-.v-enter-active, .v-leave-active {
-  transition: opacity 1s;
-}
-
-.v-enter-from, .v-leave-to {
-  opacity: 0;
-}
-
-.v-enter-to, .v-leave-from {
-  opacity: 1;
-}
 #menu {
     //nav
     min-height: 100vh;

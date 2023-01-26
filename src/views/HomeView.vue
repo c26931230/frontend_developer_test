@@ -1,17 +1,18 @@
 <template>
   <BannerVideo/>
-  <h1>HI</h1>
   <About/>
-  <div class="main_box" :style="{
+  <div class="main_box" ref="main_box">
+  <!-- <div class="main_box" :style="{
     transform: `translateY(${-halfAwardBox}px)`
-  }" ref="main_box">
+  }" ref="main_box"> -->
     <Awards :receiveAwardHeight="receiveAwardHeight"/>
     <Ingradients :halfAwardBox="halfAwardBox" :halfQuoteBox="halfQuoteBox"/>
     <Quote :receiveQuoteHeight="receiveQuoteHeight"/>
   </div>
-  <div class="main_box2" :style="{
+  <div class="main_box2">
+  <!-- <div class="main_box2" :style="{
     transform: `translateY(${-halfQuoteBox * 1.5}px)`
-  }">
+  }"> -->
     <Experience/>
     <Club/>
   </div>

@@ -1,14 +1,15 @@
 <template>
   <!-- OUR INGRADIENTS -->
-  <section id="ingradients" :style="{
+  <!-- <section id="ingradients" :style="{
     'padding-top': halfAwardBox + 'px',
     'padding-bottom': halfQuoteBox + 'px',
   
-  }">
+  }"> -->
+  <section id="ingradients">
     <div class="wrapper">
       <div class="title_box">
-        <h3 data-aos="fade-up" data-aos-duration="1500">OUR INGRADIENTS</h3>
-        <p data-aos="fade-up" data-aos-duration="1500">
+        <h3 data-aos="fade-up" data-aos-duration="1500" data-aos-offset="-200">&nbsp;OUR INGRADIENTS&nbsp;&nbsp;</h3>
+        <p data-aos="fade-up" data-aos-duration="1500" data-aos-offset="-200">
           Cras quis nulla commodo, aliquam lectus sed, blandit augue. Cras ullamcorper bibendum bibendum. Duis
           tincidunt urna non pretium porta. Nam condimentum vitae ligula vel ornare. Phasellus at semper turpis. Nunc
           eu tellus tortor. Etiam at condimentum nisl, vitae sagittis orci. Donec id dignissim nunc. Donec elit ante,
@@ -16,7 +17,7 @@
           Aliquam consectetur, eros et vulputate euismod, nunc leo tempor lacus, ac rhoncus neque eros nec lacus. Cras
           lobortis molestie faucibus.
         </p>
-        <router-link class="btn" to="/" data-aos="fade-up" data-aos-duration="1500">OUR SERVICES
+        <router-link class="btn" to="/" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="-200">OUR SERVICES
           <span>——</span></router-link>
       </div>
       <div class="ingradients_box">
@@ -30,7 +31,7 @@
           <button>VIEW MORE</button>
         </div>
       </div>
-      <router-link to="/" class="ingradient_btn" data-aos="fade-up" data-aos-duration="1500">VIEW MORE DIGISALAD’S
+      <router-link to="/" class="ingradient_btn" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="-200">VIEW MORE DIGISALAD’S
         INGRADIENTS</router-link>
     </div>
   </section>
@@ -102,18 +103,21 @@ export default {
 #ingradients {
   background-color: $main_5;
   border-radius: 50px 0 50px 0;
-
+  padding-top: 250px;
+  padding-bottom: 300px;
   .wrapper {
-    width: 80%;
+    width: 100%;
     margin: 0 auto 1000px;
     @include maxWidth();
+    padding: 0 10px;
+    // border: 1px solid red;
 
     .title_box {
       margin-bottom: 85px;
       margin-top: 100px;
 
       h3 {
-        @include h3('#OUR INGRADIENTS', $main_3, $main_6);
+        @include decoWavy($main_3,$main_6);
         margin-bottom: 70px;
       }
 
@@ -135,7 +139,6 @@ export default {
     @include flex();
     justify-content: space-between;
     color: $main_3;
-    // margin-bottom: 100px;
 
     .item {
       width: 100%;
@@ -201,7 +204,7 @@ export default {
     margin-bottom: 100px;
 
     &::before {
-      content: "#VIEW MORE DIGISALAD’S INGRADIENTS#";
+      content: "#VIEW MORE DIGISALAD’S INGRADIENTS";
       position: absolute;
       color: transparent;
       text-decoration: underline 5px $main_7;
@@ -210,6 +213,7 @@ export default {
       z-index: -1;
       white-space: pre-wrap;
       width: fit-content;
+      white-space: nowrap;
     }
   }
 }
@@ -232,8 +236,9 @@ export default {
 
 @media screen and (min-width:768px) {
   #ingradients {
-
+    padding-bottom: 250px;
     .wrapper {
+      width: 80%;
       .ingradients_box {
         .item {
           width: 48%;
@@ -249,6 +254,8 @@ export default {
 
 @media screen and (min-width:1024px) {
   #ingradients {
+    padding-top: 150px;
+    padding-bottom: 300px;
     .wrapper {
       .ingradients_box {
         .item {

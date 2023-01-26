@@ -1,16 +1,16 @@
 <template>
 <section id="about">
     <div class="wrapper">
-      <h3 data-aos="fade-up" data-aos-duration="1500">ABOUT DIGISALAD</h3>
+      <h3 data-aos="fade-down" data-aos-duration="1500">&nbsp;ABOUT DIGISALAD&nbsp;&nbsp;</h3>
       <div class="video_box" @click="play" data-aos="fade-up" data-aos-duration="1500">
         <video id="myMovie" width="640" poster="../assets/img/video_thumbnail.png">
           <source src="../assets/video/DigiSalad.mp4">
         </video>
         <div class="icon_box" v-show="isPlay == false">
-          <i class="fa-solid fa-circle-play"></i>
+          <img src="../assets/img/play_btn.png" alt="play">
         </div>
         <div class="icon_box" v-show="isPlay" ref="pauseBtn">
-          <i class="fa-solid fa-circle-pause"></i>
+          <img src="../assets/img/pause_btn.png" alt="pause">
         </div>
       </div>
       <p class="txt" data-aos="fade-up" data-aos-duration="1500">Cras quis nulla commodo, aliquam lectus sed, blandit augue. Cras ullamcorper bibendum bibendum.
@@ -59,25 +59,24 @@ export default {
 #about {
   z-index: 9;
   position: relative;
-
+  padding-top: 70px;
+  overflow: hidden;
   .wrapper {
     @include maxWidth();
 
     h3 {
-      @include h3('#ABOUT DIGISALAD', $main_4, $main_5);
-      position: relative;
+      @include decoWavy();
       &:after{
+        // 裝飾線
           content: "";
           position:absolute;
           display: block;
-          // top: 500%;
-          left: 0;
-          height: 1px;
-          width: 60%;
+          height: 100px;
+          width: 1px;
           background-color: #808080;
           position: absolute;
-          transform: translateX(-50%) rotate(90deg);
           top: -200%;
+          transform: translate(-50%,-50%);
           left: 50%;
         }
     }
@@ -93,17 +92,15 @@ export default {
       }
 
       .icon_box {
-
-        .fa-circle-play,
-        .fa-circle-pause {
-          color: $main_5;
-          font-size: 60px;
+        cursor: pointer;
+        img{
+          width: 50px;
           @include center();
         }
       }
 
       .icon_box.active {
-        .fa-circle-pause {
+        img {
           animation: pauseAnimation .5s;
           animation-iteration-count: 1;
           animation-fill-mode: forwards;
@@ -139,19 +136,21 @@ export default {
 
 @media screen and (min-width:768px) {
   #about {
-    h3 {
-      font-size: 28px;
-    }
+    .wrapper{
 
-    .video_box {
-      .icon_box {
-
-        .fa-circle-play,
-        .fa-circle-pause {
-          font-size: 100px;
-        }
+      h3 {
+        font-size: 28px;
       }
-
+  
+      .video_box {
+        .icon_box {
+  
+         img{
+            width: 100px;
+          }
+        }
+  
+      }
     }
   }
 }

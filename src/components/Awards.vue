@@ -1,8 +1,9 @@
 <template>
-<section id="award_box" ref="award_box">
+<section id="award_box">
+<!-- <section id="award_box" ref="award_box"> -->
       <div class="wrapper">
         <div class="txt_box">
-          <h3 data-aos="fade-up" data-aos-duration="1500">AWARDS</h3>
+          <h3 data-aos="fade-up" data-aos-duration="1500">&nbsp;AWARDS&nbsp;&nbsp;</h3>
           <p data-aos="fade-up" data-aos-duration="1500">Cras quis nulla commodo, aliquam lectus sed, blandit augue. Cras ullamcorper bibendum bibendum. Duis
             tincidunt urna non pretium porta. Nam condimentum vitae ligula vel ornare. Phasellus at semper turpis. Nunc
             eu tellus tortor. Etiam at condimentum nisl, vitae sagittis orci. Donec id dignissim nunc. </p>
@@ -16,18 +17,18 @@
 <script>
 export default {
     name: 'Awards',
-    props:['receiveAwardHeight'],
+    // props:['receiveAwardHeight'],
     data() {
         return {
-          halfAwardBox:''
+          // halfAwardBox:''
         }
     },
     methods:{
-      translate(){
-        let awardBoxHeight = this.$refs.award_box.clientHeight;
-        this.halfAwardBox = awardBoxHeight / 2;
-        this.receiveAwardHeight(this.halfAwardBox)
-      }
+      // translate(){
+      //   let awardBoxHeight = this.$refs.award_box.clientHeight;
+      //   this.halfAwardBox = awardBoxHeight / 2;
+      //   this.receiveAwardHeight(this.halfAwardBox)
+      // }
     },
     mounted() {
     //  const self = this;
@@ -35,13 +36,13 @@ export default {
     //   self.translate();
     // })
     // this.translate();
-    const self = this;
-    this.$nextTick(() => {
-        self.translate();
-    });
-    window.addEventListener("resize", function () {
-        self.translate();
-    });
+    // const self = this;
+    // this.$nextTick(() => {
+    //     self.translate();
+    // });
+    // window.addEventListener("resize", function () {
+    //     self.translate();
+    // });
     },
 
 }
@@ -65,7 +66,8 @@ export default {
 
     .txt_box {
       h3 {
-        @include h3('#AWARDS', $main_4, $main_5)
+        // @include h3('#AWARDS', $main_4, $main_5)
+        @include decoWavy();
       }
 
       p {
