@@ -4,8 +4,8 @@
             <div class="wrapper">
                 <div class="function_box">
                     <img src="../assets/img/logo_white.png" alt="digiSalad" class="logo">
-                    <div class="toggle">
-                        <span v-for="i in 2" @click="closeMenu"></span>
+                    <div class="toggle" @click="closeMenu">
+                        <span v-for="i in 2"></span>
                     </div>
                 </div>
 
@@ -51,7 +51,6 @@ export default {
     methods:{
         closeMenu(){
             this.$store.state.isMenuOpen = false
-            console.log(this.$store.state.isMenuOpen);
         }
     }
 }
@@ -121,11 +120,9 @@ export default {
     }
 }
 
+//ul
 .item_box {
-    //ul
     padding: 10px;
-    // .item{ //li
-    // }
 }
 
 .list_box {
@@ -201,7 +198,7 @@ export default {
     }
 }
 
-// //左邊
+//左邊
 .item:nth-child(1) {
     .list_box {
         .list_item {
@@ -357,12 +354,8 @@ export default {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-evenly;
-        // align-items: center;
         height: calc(100vh - 85px);
         min-height: 480px;
-        // border: 10px solid red;
-        // min-height: 600px;
-        
         width: 90%;
         margin: 0 auto;
 
