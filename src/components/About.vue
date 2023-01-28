@@ -22,7 +22,10 @@
         consectetur,
         eros et vulputate euismod, nunc leo tempor lacus, ac rhoncus neque eros nec lacus. Cras lobortis molestie
         faucibus.</p>
-      <router-link class="btn" to="/" data-aos="fade-up" data-aos-duration="1500">View More <span>——</span></router-link>
+      <button class="btn" to="/" data-aos="fade-up" data-aos-duration="1500">
+        <span>View More</span>
+        <span class="line">———</span>
+      </button>
     </div>
   </section>
 </template>
@@ -49,9 +52,6 @@ export default {
       }
     },  
     },
-    mounted() {
-    },
-
 }
 </script>
 <style lang="scss">
@@ -116,12 +116,10 @@ export default {
       @include text();
 
     }
-
-    .btn {
-      @include btn_rectangle()
+    .btn{
+      @include btnRectangle();
     }
   }
-
 }
 
 @keyframes pauseAnimation {

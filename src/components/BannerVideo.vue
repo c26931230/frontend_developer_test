@@ -9,15 +9,15 @@
       </a>
       <h2 data-aos="zoom-in" data-aos-duration="1000">WE CREATE<br>
         AMAZING<br>
-        DIGITAL EXPERIENCES
+        <span>EXPERIENCES</span>
       </h2>
       <div class="salad_box" data-aos="fade-down" data-aos-offset="-300" data-aos-duration="1000">
         <img src="@/assets/img/salad.png" alt="salad">
         <p>TASTE US NOW!</p>
       </div>
     </div>
-    <div class="deco_box" data-aos="fade-up" v-show="$store.state.isMenuOpen == false">
-      <p>DIGITAL AGENCY</p>
+    <div class="deco_box" v-show="$store.state.isMenuOpen == false">
+      <p data-aos="zoom-in" data-aos-duration="1000">DIGITAL AGENCY</p>
     </div>
   </section>
 </template>
@@ -36,7 +36,6 @@ export default {
   top: 0;
   border-radius: 0 0 50px 50px;
   box-sizing: border-box;
-  // margin-bottom: 70px;
 
   &::after {
     content: "";
@@ -66,7 +65,6 @@ export default {
     width: 70%;
     text-align: center;
     margin: 30px 0;
-    // opacity: 0;//*** */
     .logo {
       width: 40%;
       position: relative;
@@ -87,6 +85,23 @@ export default {
       font-size: 28px;
       line-height: 50px;
       letter-spacing: 3.16667px;
+      span{
+        position: relative;
+        &::after{
+          content: "";
+          position: absolute;
+          display: block;;
+          background-color: $main_5;
+          bottom: 10px;
+          left: 0;
+          width: 100%;
+          height: 4px;
+          z-index: -1;
+        }
+        &::before{
+          @include decoBall(-10px);
+        }
+      }
     }
 
     .salad_box {
@@ -125,7 +140,6 @@ export default {
   }
 
   .deco_box {
-    // visibility: hidden;//暫時
     p {
       writing-mode: vertical-rl;
       color: $main_3;
@@ -169,6 +183,12 @@ export default {
         font-size: 38px;
         line-height: 70px;
         letter-spacing: 9.16667px;
+        span{
+        position: relative;
+        &::after{
+          bottom: 15px;
+        }
+      }
       }
     }
 
