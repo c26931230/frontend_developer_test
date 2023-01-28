@@ -5,9 +5,9 @@
         <div class="img_box" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="-400">
           <img src="../assets/img/founder.png" alt="Tony Ng" >
           <h3>TONY NG</h3>
-          <p><i>Founder & Creative Director</i></p>
+          <p>Founder & Creative Director</p>
         </div>
-        <div class="txt_box" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="-400">
+        <div class="txt_box" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="-300">
           <img src="../assets/img/quote_icon.png" alt="quote">
           <p>A great digital work isn’t about designing beautiful pages purely. It is about context - how do we deliver
             the <strong> experience to the right person at the right time.</strong>The most important thing is that your
@@ -20,27 +20,6 @@
 <script>
 export default {
     name: 'Quote',
-    props:['receiveQuoteHeight'],
-    data() {
-        return {
-          halfQuoteBox:'',
-        }
-    },
-    methods:{
-      translate(){
-        let quoteBoxHeight = this.$refs.quote_box.clientHeight;
-       this.halfQuoteBox = quoteBoxHeight / 2;
-       this.receiveQuoteHeight(this.halfQuoteBox)
-      }
-    },
-    mounted() {
-      const self = this;
-     window.addEventListener("resize", function () {
-      self.translate();
-    })
-    this.translate();
-    },
-
 }
 </script>
 <style lang="scss" scoped>
@@ -55,13 +34,18 @@ export default {
   .wrapper {
     border-radius: 0 50px 50px 50px;
     width: 90%;
-    background-image: linear-gradient(0deg, rgba(88, 88, 128, 0.8), rgba(88, 88, 128, 0.8)), url(../assets/img/quote_bg.png);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    padding: 30px;
+    position: relative;
+    z-index: 2;
     transform: translateY(-50%);
-
+    overflow: hidden;
+    &::after{
+      @include pseudo();
+      @include bgImage();
+      background-image: linear-gradient(0deg, rgba(88, 88, 128, 0.8), rgba(88, 88, 128, 0.8)), url(../assets/img/quote_bg.png);
+      padding: 30px;
+      filter: blur(4px);
+      z-index: -1;
+    }
     .img_box {
       text-align: center;
       position: relative;
@@ -88,6 +72,7 @@ export default {
         font-size: 16px;
         line-height: 16px;
         letter-spacing: 2px;
+        font-style: italic;
       }
     }
 

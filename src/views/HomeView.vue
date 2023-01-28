@@ -1,20 +1,15 @@
 <template>
-  <BannerVideo/>
-  <About/>
+  <BannerVideo />
+  <About />
   <div class="main_box" ref="main_box">
-  <!-- <div class="main_box" :style="{
-    transform: `translateY(${-halfAwardBox}px)`
-  }" ref="main_box"> -->
-    <Awards :receiveAwardHeight="receiveAwardHeight"/>
-    <Ingradients :halfAwardBox="halfAwardBox" :halfQuoteBox="halfQuoteBox"/>
-    <Quote :receiveQuoteHeight="receiveQuoteHeight"/>
+    <Awards />
+    <Ingradients />
+    <Quote />
   </div>
   <div class="main_box2">
-  <!-- <div class="main_box2" :style="{
-    transform: `translateY(${-halfQuoteBox * 1.5}px)`
-  }"> -->
-    <Experience/>
-    <Club/>
+    <Experience />
+    <!-- <Club /> -->
+    <MyCarousel/>
   </div>
 </template>
 
@@ -25,16 +20,11 @@ import Awards from '@/components/Awards.vue'
 import Ingradients from '@/components/Ingradients.vue'
 import Quote from '@/components/Quote.vue'
 import Experience from '@/components/Experience.vue'
-import Club from '@/components/Club.vue'
+import MyCarousel from '@/components/MyCarousel.vue'
+// import Club from '@/components/Club.vue'
 export default {
   name: 'Home',
-  components:{BannerVideo,About,Awards,Ingradients,Quote,Experience,Club},
-  data() {
-    return {
-      halfAwardBox: '',
-      halfQuoteBox: '',
-    }
-  },
+  components: { BannerVideo, About, Awards, Ingradients, Quote, Experience,MyCarousel },
   methods: {
     windowScroll() {
       let scrollHeight = window.scrollY;
@@ -45,23 +35,15 @@ export default {
         this.$store.state.isActive = false;
       }
     },
-    receiveAwardHeight(e){
-      this.halfAwardBox = e;
-    },  
-    receiveQuoteHeight(e){
-      this.halfQuoteBox = e;
-    }, 
     changeBg() {
-      let mainBoxTop = this.$refs.main_box.offsetTop;
-      if (window.scrollY >= mainBoxTop * 1.2) {
+      if (this.$refs.main_box) {
+        let mainBoxTop = this.$refs.main_box.offsetTop;
+        if (window.scrollY >= mainBoxTop * 1.2) {
         document.body.style.backgroundColor = '#FFF';
       } else {
         document.body.style.backgroundColor = '#F5F5F5';
       }
-    },
-    next(e,a) {
-      this.x -= 100;
-      console.log(e,a);
+      }
     },
   },
   mounted() {
@@ -69,7 +51,6 @@ export default {
     window.addEventListener("scroll", function () {
       self.windowScroll();
       self.changeBg();
-
     })
     this.windowScroll();
   },
@@ -79,5 +60,30 @@ export default {
 </script>
 <style scoped lang="scss">
 @import "@/assets/sass/main.scss";
-@import "@/assets/sass/home.scss";
+
+// 手機
+.main_box {
+  transform: translateY(-200px);
+}
+
+//平板橫以上
+@media screen and (min-width:1024px) {
+  .main_box {
+    transform: translateY(-100px);
+  }
+}
+
+//手機
+.main_box2 {
+  background-color: $main_3;
+  transform: translateY(-500px);
+}
+
+//平板橫以上
+@media screen and (min-width:1024px) {
+  .main_box2 {
+    transform: translateY(-400px);
+  }
+}
+
 </style>

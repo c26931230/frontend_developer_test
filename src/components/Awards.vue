@@ -1,6 +1,5 @@
 <template>
 <section id="award_box">
-<!-- <section id="award_box" ref="award_box"> -->
       <div class="wrapper">
         <div class="txt_box">
           <h3 data-aos="fade-up" data-aos-duration="1500">&nbsp;AWARDS&nbsp;&nbsp;</h3>
@@ -17,34 +16,6 @@
 <script>
 export default {
     name: 'Awards',
-    // props:['receiveAwardHeight'],
-    data() {
-        return {
-          // halfAwardBox:''
-        }
-    },
-    methods:{
-      // translate(){
-      //   let awardBoxHeight = this.$refs.award_box.clientHeight;
-      //   this.halfAwardBox = awardBoxHeight / 2;
-      //   this.receiveAwardHeight(this.halfAwardBox)
-      // }
-    },
-    mounted() {
-    //  const self = this;
-    //  window.addEventListener("resize", function () {
-    //   self.translate();
-    // })
-    // this.translate();
-    // const self = this;
-    // this.$nextTick(() => {
-    //     self.translate();
-    // });
-    // window.addEventListener("resize", function () {
-    //     self.translate();
-    // });
-    },
-
 }
 </script>
 <style lang="scss" scoped>

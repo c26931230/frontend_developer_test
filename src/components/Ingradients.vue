@@ -1,10 +1,5 @@
 <template>
   <!-- OUR INGRADIENTS -->
-  <!-- <section id="ingradients" :style="{
-    'padding-top': halfAwardBox + 'px',
-    'padding-bottom': halfQuoteBox + 'px',
-  
-  }"> -->
   <section id="ingradients">
     <div class="wrapper">
       <div class="title_box">
@@ -17,8 +12,10 @@
           Aliquam consectetur, eros et vulputate euismod, nunc leo tempor lacus, ac rhoncus neque eros nec lacus. Cras
           lobortis molestie faucibus.
         </p>
-        <router-link class="btn" to="/" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="-200">OUR SERVICES
-          <span>——</span></router-link>
+        <button class="btn" to="/" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="-200">
+          <span>OUR SERVICES</span>
+          <span class="line">———</span>
+        </button>
       </div>
       <div class="ingradients_box">
         <div class="item" v-for="i in ingredients" :key="i.id" data-aos="fade-up" data-aos-duration="1500">
@@ -31,15 +28,15 @@
           <button>VIEW MORE</button>
         </div>
       </div>
-      <router-link to="/" class="ingradient_btn" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="-200">VIEW MORE DIGISALAD’S
-        INGRADIENTS</router-link>
+        <button class="btn_line" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="-50">VIEW
+        MORE DIGISALAD’S
+        INGRADIENTS</button>
     </div>
   </section>
 </template>
 <script>
 export default {
   name: 'Ingradients',
-  props: ['halfAwardBox', 'halfQuoteBox'],
   data() {
     return {
       ingredients: [
@@ -91,10 +88,6 @@ export default {
       ]
     }
   },
-  methods: {
-  },
-  mounted() {
-  },
 
 }
 </script>
@@ -104,7 +97,8 @@ export default {
   background-color: $main_5;
   border-radius: 50px 0 50px 0;
   padding-top: 250px;
-  padding-bottom: 300px;
+  padding-bottom: 350px;
+
   .wrapper {
     width: 100%;
     margin: 0 auto 1000px;
@@ -117,7 +111,7 @@ export default {
       margin-top: 100px;
 
       h3 {
-        @include decoWavy($main_3,$main_6);
+        @include decoWavy($main_3, $main_6);
         margin-bottom: 70px;
       }
 
@@ -130,7 +124,7 @@ export default {
       }
 
       .btn {
-        @include btn_rectangle($main_6, $main_3);
+        @include btnRectangle('normal',$main_6, $main_3, $main_3, $main_6);
       }
     }
   }
@@ -184,11 +178,40 @@ export default {
         letter-spacing: 2.22px;
         cursor: pointer;
         border: 2px solid $main_3;
+        position: relative;
+        overflow: hidden;
+        transition: 0.4s transform ease-in-out;
+
+        &::after {
+          background-color: #fff;
+          border-radius: 30px;
+          content: '';
+          display: block;
+          height: 100%;
+          width: 100%;
+          position: absolute;
+          left: 0;
+          top: 0;
+          transform: translate(-100%, 0) rotate(10deg);
+          transform-origin: top left;
+          transition: 0.4s transform ease-out;
+          z-index: -1;
+        }
+
+        &:hover::after {
+          transform: translate(0, 0);
+        }
+
+        &:hover {
+          border: 2px solid transparent;
+          color: $main_5;
+          transform: scale(0.98);
+        }
       }
     }
   }
-
-  .ingradient_btn {
+  .btn_line{
+    border: none;
     font-weight: 700;
     font-size: 12px;
     line-height: 22px;
@@ -202,32 +225,38 @@ export default {
     position: relative;
     text-align: center;
     margin-bottom: 100px;
-
-    &::before {
-      content: "#VIEW MORE DIGISALAD’S INGRADIENTS";
-      position: absolute;
-      color: transparent;
-      text-decoration: underline 5px $main_7;
-      left: 0;
-      bottom: 7px;
+    background: transparent;
+    outline: none;
+    cursor: pointer;
+    transition: 0.4s;
+    white-space: nowrap;
+    &::after{
+      @include pseudo(100%,10px,0,50%);
+      background-color: $main_7;
       z-index: -1;
-      white-space: pre-wrap;
-      width: fit-content;
-      white-space: nowrap;
+      transition: 0.4s;
+    }
+    &:hover::after{
+      // background-color: #fff;
+      height: 5px;
+      width: 104%;
+      top: 70%;
+      left: -2%;
+      border-radius: 20px;
+    }
+    &:hover{
+      transform: translateY(10%) scale(1.1);
+      transition: 0.4s;
     }
   }
+ 
 }
 
-@media screen and (min-width:387px) {
+@media screen and (min-width:322px) {
   #ingradients {
     .wrapper {
-      .ingradient_btn {
-        &::before {
-          white-space: nowrap;
-          text-decoration-thickness: 10px;
-          left: -2%;
-          width: 104%;
-        }
+      .btn_line{
+        font-size: 18px;
       }
     }
 
@@ -236,9 +265,11 @@ export default {
 
 @media screen and (min-width:768px) {
   #ingradients {
-    padding-bottom: 250px;
+    padding-bottom: 300px;
+
     .wrapper {
       width: 80%;
+
       .ingradients_box {
         .item {
           width: 48%;
@@ -255,9 +286,11 @@ export default {
 @media screen and (min-width:1024px) {
   #ingradients {
     padding-top: 150px;
-    padding-bottom: 300px;
+    padding-bottom: 380px;
+
     .wrapper {
       .ingradients_box {
+        margin-bottom: 50px;
         .item {
           width: 33.33%;
         }
