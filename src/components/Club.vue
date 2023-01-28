@@ -1,60 +1,68 @@
 <template>
-    <section id="club_box">
-        <div class="num_box">
-            <span>0{{ (idx) }}</span>
-            <span></span>
-            <span>04</span>
-        </div>
-        <div class="slider_box" ref="slider_box" :style="{
-            transform: `translateX(${x}vw)`
-        }">
-            <div class="wrapper">
-                <div class="item" v-for="i in 1">
-                    <div class="img_box">
-                        <img src="../assets/img/club_bg.png" alt="LP club mobile app">
-                        <router-link to="/" class="btn">VIEW PROJECT<span>——</span></router-link>
-                    </div>
-                    <div class="txt_box">
-                        <h4>HIGHLIGHTED SHOWCASE</h4>
-                        <h3>LP CLUB MOBILE APP</h3>
-                        <p>Cras quis nulla commodo, aliquam lectus sed, blandit augue. Cras ullamcorper bibendum
-                            bibendum. Duis
-                            tincidunt urna non pretium porta. Nam condimentum vitae ligula vel ornare. Phasellus at
-                            semper turpis.
-                            Nunc eu tellus tortor. Etiam at condimentum nisl, vitae sagittis orci. Donec id dignissim
-                            nunc. Donec
-                            elit ante, eleifend a dolor et, venenatis facilisis dolor. In feugiat orci odio, sed lacinia
-                            sem
-                            elementum quis. Aliquam consectetur, eros et vulputate euismod, nunc leo tempor lacus, ac
-                            rhoncus neque
-                            eros nec lacus. Cras lobortis molestie faucibus.</p>
-                    </div>
-                </div>
+  <section id="club_box">
+    <div class="num_box">
+      <span>0{{ (idx) }}{{ transitionName}}</span>
+      <span></span>
+      <span>04</span>
+    </div>
+    <div class="slider_box" ref="slider_box">
+      <div class="wrapper">
+
+        <div class="item" v-for="i in 4" v-show="i == idx">
+          <transition :name="transitionName">
+            <div class="img_box" v-show="i == idx">
+              <img src="../assets/img/project1.png" alt="LP club mobile app">
+              <button class="btn">
+                <span>View PROJECT</span>
+                <span class="line">———</span>
+              </button>
             </div>
+          </transition>
+          <transition :name="transitionName">
+            <div class="txt_box" v-show="i == idx">
+              <h4>HIGHLIGHTED SHOWCASE</h4>
+              <h3>LP CLUB MOBILE APP</h3>
+              <p>Cras quis nulla commodo, aliquam lectus sed, blandit augue. Cras ullamcorper bibendum
+                bibendum. Duis
+                tincidunt urna non pretium porta. Nam condimentum vitae ligula vel ornare. Phasellus at
+                semper turpis.
+                Nunc eu tellus tortor. Etiam at condimentum nisl, vitae sagittis orci. Donec id dignissim
+                nunc. Donec
+                elit ante, eleifend a dolor et, venenatis facilisis dolor. In feugiat orci odio, sed lacinia
+                sem
+                elementum quis. Aliquam consectetur, eros et vulputate euismod, nunc leo tempor lacus, ac
+                rhoncus neque
+                eros nec lacus. Cras lobortis molestie faucibus.</p>
+            </div>
+          </transition>
         </div>
-        <div class="ctr_box">
-            <button :disabled="idx == 1 ? true : false" @click="x += 100; idx -= 1">
-                <img src="../assets/img/left.png" alt="left_btn">
-            </button>
-            <button :disabled="idx == 4 ? true : false" @click="x -= 100; idx += 1">
-                <img src="../assets/img/right.png" alt="right_btn">
-            </button>
-        </div>
-    </section>
+      </div>
+    </div>
+    <div class="ctr_box">
+      <button :disabled="idx == 1 ? true : false" @click="idx -= 1; transitionName='slideToLeft'">
+        <img src="../assets/img/left.png" alt="left_btn">
+      </button>
+      <button :disabled="idx == 4 ? true : false" @click="idx += 1; transitionName='slideToRight'">
+        <img src="../assets/img/right.png" alt="right_btn">
+      </button>
+    </div>
+  </section>
+  
 </template>
 <script>
 export default {
-    name: 'Club',
-    data() {
-        return {
-            x: 0,
-            idx: 1,
-        }
-    },
-    methods: {
-    },
-    mounted() {
-    },
+  name: 'Club',
+  data() {
+    return {
+      // x: 0,
+      idx: 1,
+      transitionName:'',
+    }
+  },
+  methods: {
+  },
+  mounted() {
+  },
 
 }
 </script>
@@ -64,13 +72,8 @@ export default {
   padding: 100px 0;
   position: relative;
   z-index: 9;
-  // .num_box{
-  //   width: 54px;
-  //   height: 54px;
-  //   border: 1px solid red;
-  // }
+
   .num_box {
-    // border: 1px solid red;
     color: $main_3;
     font-weight: 600;
     font-size: 16px;
@@ -79,18 +82,21 @@ export default {
     width: 54px;
     height: 54px;
     position: relative;
-    // margin-left: auto;
     position: absolute;
     transform: translateX(-50%);
     left: 90%;
     top: 10%;
-    span{
-      position:absolute;
-      &:nth-child(1){
+
+    span {
+      position: absolute;
+
+      &:nth-child(1) {
         top: 0;
         left: 0;
       }
-      &:nth-child(2){//line
+
+      &:nth-child(2) {
+        //line
         height: 1px;
         width: 105%;
         background-color: $main_5;
@@ -98,7 +104,8 @@ export default {
         transform: rotate(-45deg);
         top: 50%;
       }
-      &:nth-child(3){
+
+      &:nth-child(3) {
         bottom: 0;
         right: 0;
       }
@@ -106,26 +113,17 @@ export default {
   }
 
   &:after {
-    content: '';
-    width: 100%;
-    height: 100%;
-    display: block;
-    position: absolute;
-    top: 0px;
-    left: 0px;
+    @include pseudo();
+    @include bgImage();
     z-index: -1;
-    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(../assets/img/club_bg.png);
-    background-size: cover;
-    background-position: bottom;
-    background-repeat: no-repeat;
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(../assets/img/project1.png);
     filter: blur(10px);
   }
 
   .ctr_box {
     width: 90%;
     @include center();
-    display: flex;
-    flex-wrap: wrap;
+    @include flex();
     justify-content: space-between;
 
     button {
@@ -141,20 +139,22 @@ export default {
   .slider_box {
     transition: 1s;
     @include maxWidth();
-    border: 1px solid red;
 
     .wrapper {
-      // width: 400%;
-      display: flex;
 
+      // width: 400%;
+      // display: flex;
+      // width: fit-content;
       .item {
-        @include flex();
-        display: inline-block;
-        align-items: center;
-        justify-content: center;
+        // @include flex();
+        // display: inline-block;
+        // align-items: center;
+        // justify-content: center;
         padding: 10px 0;
         margin: 0 auto;
+        // float: left;
 
+        // border: 10px solid red;
         .img_box {
           width: 100%;
           position: relative;
@@ -168,7 +168,7 @@ export default {
           }
 
           .btn {
-            @include btn_rectangle($main_5,$main_3,'large');
+            @include btnRectangle('large');
           }
         }
 
@@ -178,6 +178,7 @@ export default {
           text-align: center;
           order: -1;
           max-height: 300px;
+
           h4 {
             font-weight: 700;
             font-size: 16px;
@@ -217,7 +218,7 @@ export default {
             color: $main_3;
             // width: 80%;
             margin: 0 auto;
-            border: 1px solid red;
+            // border: 1px solid red;
             display: none;
           }
         }
@@ -272,7 +273,7 @@ export default {
               margin-left: 0;
             }
 
-            p{
+            p {
               display: block;
             }
           }
