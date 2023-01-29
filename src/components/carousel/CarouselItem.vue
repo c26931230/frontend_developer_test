@@ -5,7 +5,7 @@
                 <img :src="require(`@/assets/img/${project.image}`)" :alt="project.name">
                 <button class="btn">
                     <span>View PROJECT</span>
-                    <span class="line">———</span>
+                    <span class="line">—————</span>
                 </button>
             </div>
             <div class="txt_box">
@@ -19,10 +19,6 @@
 <script>
 export default {
     props: ["project", "currentSlide", "index", "direction"],
-    mounted() {
-        // console.log('@',this.project);
-        // console.log('@',this.currentSlide);
-    },
     computed: {
         transitionName() {
             return this.direction === "right" ? "slideToRight" : "slideToLeft"
@@ -34,6 +30,8 @@ export default {
 <style lang="scss" scoped>
 // 430以下
 .item {
+    @include flex();
+    flex-direction: column;
     padding: 10px 0;
     margin: 0 auto;
     position: absolute;
@@ -41,9 +39,6 @@ export default {
     left: 0;
     right: 0;
     bottom: 0;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
 }
 
 .img_box {
@@ -68,7 +63,6 @@ export default {
     text-align: center;
     order: -1;
     max-height: 300px;
-    order: -1;
 
     h4 {
         font-weight: 700;
@@ -86,7 +80,7 @@ export default {
         letter-spacing: 3.63636px;
         position: relative;
         width: fit-content;
-        margin: 0 auto;
+        margin: 0 auto 20px;
         color: $main_3;
         display: block;
         z-index: 3;
@@ -117,7 +111,6 @@ export default {
 @media screen and (min-width:430px) {
     .img_box {
         width: 300px;
-        // position: relative;
         padding: 0px;
         margin: 0 auto;
 
@@ -131,9 +124,9 @@ export default {
 // 768以上
 @media screen and (min-width:768px) {
     .item {
+        @include maxWidth();
         flex-direction: row;
         align-items: center;
-        @include maxWidth();
         overflow: hidden;
         .img_box {
             width: 100%;
@@ -161,9 +154,9 @@ export default {
             }
 
             p {
+                @include text();
                 display: block;
                 color: $main_3;
-                @include text();
             }
         }
 
@@ -172,9 +165,9 @@ export default {
 // 1024以上
 @media screen and (min-width:1024px) {
     .item {
+        @include maxWidth();
         flex-direction: row;
         align-items: center;
-        @include maxWidth();
         overflow: hidden;
         width: 90%;
         .img_box {

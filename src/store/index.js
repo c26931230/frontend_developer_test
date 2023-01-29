@@ -5,12 +5,4 @@ export default createStore({
     isActive: false,
     isMenuOpen:false,
   },
-  getters: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-  }
 })

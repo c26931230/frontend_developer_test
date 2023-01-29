@@ -8,7 +8,6 @@
   </div>
   <div class="main_box2">
     <Experience />
-    <!-- <Club /> -->
     <MyCarousel/>
   </div>
 </template>
@@ -21,7 +20,6 @@ import Ingradients from '@/components/Ingradients.vue'
 import Quote from '@/components/Quote.vue'
 import Experience from '@/components/Experience.vue'
 import MyCarousel from '@/components/MyCarousel.vue'
-// import Club from '@/components/Club.vue'
 export default {
   name: 'Home',
   components: { BannerVideo, About, Awards, Ingradients, Quote, Experience,MyCarousel },
@@ -59,30 +57,19 @@ export default {
 }
 </script>
 <style scoped lang="scss">
-@import "@/assets/sass/main.scss";
-
-// 手機
-.main_box {
-  transform: translateY(-200px);
+.main_box{
+  margin-top: -200px;
 }
-
-//平板橫以上
+.main_box2 {
+  margin-top: -350px;
+}
+//1024以上
 @media screen and (min-width:1024px) {
   .main_box {
-    transform: translateY(-100px);
+    margin-top: -100px;
   }
-}
-
-//手機
-.main_box2 {
-  background-color: $main_3;
-  transform: translateY(-500px);
-}
-
-//平板橫以上
-@media screen and (min-width:1024px) {
   .main_box2 {
-    transform: translateY(-400px);
+    margin-top: -300px;
   }
 }
 

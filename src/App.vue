@@ -6,12 +6,9 @@
 <script>
 import MyHeader from '@/components/MyHeader.vue'
 export default {
-  name: 'HomeView',
+  name: 'APP',
   components: {
     MyHeader
   }
 }
 </script>
-<style lang="scss">
-@import "@/assets/sass/main.scss";
-</style>

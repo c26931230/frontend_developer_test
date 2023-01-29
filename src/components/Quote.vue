@@ -26,8 +26,7 @@ export default {
 // === quote_box ===
 #quote_box {
   margin-top: 50px;
-  max-width: 1440px;
-  margin: 0 auto;
+  @include maxWidth();
   background-color: $main_3;
   width: 100%;
 
@@ -38,6 +37,7 @@ export default {
     z-index: 2;
     transform: translateY(-50%);
     overflow: hidden;
+    padding: 50px;
     &::after{
       @include pseudo();
       @include bgImage();
@@ -94,6 +94,9 @@ export default {
         strong {
           font-weight: 700;
           color: $main_7;
+          &::selection{
+            background-color:$main_7 ;
+          }
         }
       }
     }

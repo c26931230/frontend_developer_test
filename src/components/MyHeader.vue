@@ -1,12 +1,14 @@
 <template>
-    <header id="header" ref="header" v-show="$store.state.isMenuOpen == false">
-        <div class="holder" ref="holder" :style="{
+    <header id="header" v-show="$store.state.isMenuOpen == false">
+        <div class="holder" :style="{
             backgroundColor: $store.state.isActive ? '#ffffff90' : 'transparent'
         }">
             <div class="wrapper">
-                <router-link to="/" class="logo">
-                    <img src="@/assets/img/logo_blue.png" alt="digisalad logo" v-show="$store.state.isActive == true">
-                </router-link>
+                <h1>
+                    <router-link to="/" class="logo">
+                        <img src="@/assets/img/logo_blue.png" alt="digisalad logo" v-show="$store.state.isActive == true">
+                    </router-link>
+                </h1>
                 <div class="function_box">
                     <button class="btn_1">START YOUR PROJECT</button>
                     <div class="toggle" @click="openMenu">
@@ -37,9 +39,6 @@ export default {
             this.$store.state.isMenuOpen = true
         }
     },
-    mounted() {
-    },
-
 }
 </script>
 
@@ -55,8 +54,7 @@ export default {
 
         .wrapper {
             @include maxWidth;
-            display: flex;
-            flex-wrap: wrap;
+            @include flex();
             align-items: center;
             justify-content: space-between;
             padding: 15px 10px;
@@ -73,8 +71,7 @@ export default {
             }
 
             .function_box {
-                display: flex;
-                flex-wrap: wrap;
+                @include flex();
                 align-items: center;
 
                 .btn_1 {
@@ -83,25 +80,22 @@ export default {
                     width: fit-content;
                     background: linear-gradient(90deg, $main_1 3.94%, $main_2 94.73%);
                     border-radius: 24px;
+                    font-weight: 700;
+                    font-size: 14px;
+                    line-height: 17px;
+                    letter-spacing: 1.14286px;
                     cursor: pointer;
                     color: $main_3;
                     margin-right: 30px;
-                    font-size: 14px;
                     border: none;
                     position: relative;
                     overflow: hidden;
                     transition: 0.4s transform ease-in-out;
 
                     &::after {
-                        background-color: #fff;
-                        border-radius: 30px;
-                        content: '';
-                        display: block;
-                        height: 100%;
-                        width: 100%;
-                        position: absolute;
-                        left: 0;
-                        top: 0;
+                        @include pseudo();
+                        background-color: $main_3;
+                        border-radius: 24px;
                         transform: translate(-100%, 0) rotate(10deg);
                         transform-origin: top left;
                         transition: 0.4s transform ease-out;
@@ -115,30 +109,28 @@ export default {
                     &:hover {
                         border: 2px solid transparent;
                         color: $main_5;
-                        transform: scale(0.98);
+                        transform: scale(0.99);
                     }
                 }
 
                 .toggle {
-                    width: 30px;
-                    height: 22px;
-                    display: flex;
-                    flex-wrap: wrap;
+                    @include flex();
                     flex-direction: column;
                     justify-content: space-between;
+                    width: 30px;
+                    height: 22px;
                     cursor: pointer;
-
                     span {
                         width: 100%;
                         height: 3px;
                         background-color: $main_3;
                         display: block;
                         border-radius: 5px;
-
                         &:nth-child(3) {
-                            width: 80%;
+                            width:26px;
                             margin-left: auto;
                         }
+                        
                     }
                 }
             }

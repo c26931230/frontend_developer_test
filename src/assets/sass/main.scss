@@ -6,11 +6,14 @@ $main_4: #262626;
 $main_5: #26C6D0;
 $main_6: #585880;
 $main_7: #FFBC58;
-;
 
 * {
     box-sizing: border-box;
     font-family: "proxima-nova" !important;
+    &::selection{
+        background-color: $main_5;
+        color: $main_3;
+    }
 }
 
 body {
@@ -20,7 +23,7 @@ body {
 a {
     text-decoration: none;
 }
-
+// === fade ===
 .fade-enter-active,
 .fade-leave-active {
     transition: opacity 1s;
@@ -35,7 +38,7 @@ a {
 .fade-leave-from {
     opacity: 1;
 }
-// slideToRight
+// === slideToRight ===
 .slideToRight-leave-active,
 .slideToRight-enter-active {
   transition: all .9s ease-in-out;
@@ -48,7 +51,7 @@ a {
 .slideToRight-leave-to {
   transform: translateX(-100%);
 }
-// slideToLeft
+// === slideToLeft ===
 .slideToLeft-leave-active,
 .slideToLeft-enter-active {
   transition: all .9s ease-in-out;
@@ -61,9 +64,11 @@ a {
 .slideToLeft-leave-to {
   transform: translateX(100%);
 }
+// === mixin ===
 @mixin btnRectangle($size:'normal',$bgColor:$main_5,$txtColor:$main_3,$bgHover:$main_3,$txtHover:$main_4) {
     cursor: pointer;
-    padding: 20px 15px;
+    padding: 33px 25px;
+    line-height: 19px;
     font-size: 16px;
     font-weight: 700;
     letter-spacing: 2.22222px;
@@ -86,7 +91,7 @@ a {
 
     .line {
         letter-spacing: -2px;
-        margin-left: 14px;
+        margin-left: 15px;
         color: $txtColor;
     }
 
@@ -118,11 +123,11 @@ a {
     }
 }
 
-@mixin decoBall($right: 5px) {
+@mixin decoBall($right: 5px,$top:60%) {
     content: "";
     position: absolute;
     transform: translateY(-50%);
-    top: 50%;
+    top: $top;
     right: $right;
     height: 10px;
     width: 10px;
@@ -150,6 +155,9 @@ a {
     &:before {
         @include decoBall();
     }
+    @media screen and (min-width:768px) {
+        font-size: 28px;
+    }
 }
 
 
@@ -171,7 +179,7 @@ a {
     flex-wrap: wrap;
 }
 
-@mixin maxWidth($maxWidth: 1440px) {
+@mixin maxWidth($maxWidth: 1340px) {
     max-width: $maxWidth;
     margin: 0 auto;
 }

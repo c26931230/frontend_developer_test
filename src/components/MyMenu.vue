@@ -3,7 +3,7 @@
         <nav id="menu" v-show="$store.state.isMenuOpen == true">
             <div class="wrapper">
                 <div class="function_box">
-                    <img src="../assets/img/logo_white.png" alt="digiSalad" class="logo">
+                    <h1><img src="@/assets/img/logo_white.png" alt="digiSalad" class="logo"></h1>
                     <div class="toggle" @click="closeMenu">
                         <span v-for="i in 2"></span>
                     </div>
@@ -57,33 +57,28 @@ export default {
 </script>
 <style lang="scss">
 #menu {
-    //nav
     min-height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 10;
-    // transform: translateX(99%);
     &::after {
         @include pseudo();
         z-index: -1;
-        background: linear-gradient(180deg, #585880 3.61%, #26C6D0 95.7%);
+        background: linear-gradient(180deg, $main_6 3.61%, $main_5 95.7%);
         opacity: 0.9;
     }
 
     .wrapper {
-        //控制寬度
         @include maxWidth();
-        // max-height: calc(100vh - 75px);
         max-height: 100vh;
         height: fit-content;
         overflow-y: scroll;
 
         .function_box {
             //上方
-            display: flex;
-            flex-wrap: wrap;
+            @include flex();
             align-items: center;
             justify-content: space-between;
             padding: 15px 10px;
@@ -103,7 +98,6 @@ export default {
                     height: 3px;
                     width: 100%;
                     background-color: $main_3;
-                    position: absolute;
                     border-radius: 5px;
                     top: 50%;
 
@@ -130,8 +124,8 @@ export default {
     //ul
     .list_item {
         //li
-        display: flex;
-        flex-wrap: wrap;
+        @include flex();
+        cursor: pointer;
         align-items: center;
         justify-content: space-between;
         border-radius: 20px;
@@ -142,7 +136,11 @@ export default {
         position: relative;
         overflow: hidden;
         z-index: 5;
-
+        transition: .4s;
+        &:hover{
+            transform: translateY(-10px);
+            transition: .4s;
+        }
         &::after {
           @include pseudo();
             z-index: -1;
@@ -183,15 +181,7 @@ export default {
                 width: fit-content;
 
                 &:before {
-                    content: "";
-                    position: absolute;
-                    display: block;
-                    bottom: 20%;
-                    right: -20px;
-                    height: 10px;
-                    width: 10px;
-                    border-radius: 50px;
-                    background-color: #EE6C8A;
+                    @include decoBall(-20px,50%);
                 }
             }
         }
@@ -323,15 +313,7 @@ export default {
                         width: fit-content;
                         margin: 0 auto;
                         &:before {
-                            content: "";
-                            position: absolute;
-                            display: block;
-                            bottom: 20%;
-                            right: -20px;
-                            height: 10px;
-                            width: 10px;
-                            border-radius: 50px;
-                            background-color: #EE6C8A;
+                            @include decoBall(-20px,50%);
                         }
                     }
                 }
@@ -351,8 +333,7 @@ export default {
     .item_box {
         //ul
         padding: 0;
-        display: flex;
-        flex-wrap: wrap;
+        @include flex();
         justify-content: space-evenly;
         height: calc(100vh - 85px);
         min-height: 480px;
@@ -375,11 +356,11 @@ export default {
             width: 37%;
 
             .list_box {
-                height: 100%;
                 @include flex();
-                flex-direction: column;
-                align-items: center;
                 justify-content: space-between;
+                align-items: center;
+                flex-direction: column;
+                height: 100%;
                 .list_item:nth-child(1) {
                     height: calc(40% - 40px);
                     margin-bottom: 40px;
@@ -447,11 +428,11 @@ export default {
             height: 70vh;
             min-height: 400px;
             .list_box {
-                height: 100%;
                 @include flex();
                 flex-direction: column;
                 align-items: center;
                 justify-content: space-between;
+                height: 100%;
 
                 .list_item:nth-child(1) {
                     height: calc(60% - 40px);
