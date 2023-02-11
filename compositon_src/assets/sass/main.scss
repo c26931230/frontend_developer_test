@@ -1,0 +1,201 @@
+@import "reset";
+$main_1: #4EE5EA;
+$main_2: #26D0A8;
+$main_3: #fff;
+$main_4: #262626;
+$main_5: #26C6D0;
+$main_6: #585880;
+$main_7: #FFBC58;
+
+* {
+    box-sizing: border-box;
+    font-family: "proxima-nova" !important;
+    &::selection{
+        background-color: $main_5;
+        color: $main_3;
+    }
+}
+
+body {
+    background-color: #F5F5F5;
+}
+
+a {
+    text-decoration: none;
+}
+// === fade ===
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 1s;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
+
+.fade-enter-to,
+.fade-leave-from {
+    opacity: 1;
+}
+// === slideToRight ===
+.slideToRight-leave-active,
+.slideToRight-enter-active {
+  transition: all .9s ease-in-out;
+}
+
+.slideToRight-enter-from {
+  transform: translateX(100%);
+}
+
+.slideToRight-leave-to {
+  transform: translateX(-100%);
+}
+// === slideToLeft ===
+.slideToLeft-leave-active,
+.slideToLeft-enter-active {
+  transition: all .9s ease-in-out;
+}
+
+.slideToLeft-enter-from {
+  transform: translateX(-100%);
+}
+
+.slideToLeft-leave-to {
+  transform: translateX(100%);
+}
+// === mixin ===
+@mixin btnRectangle($size:'normal',$bgColor:$main_5,$txtColor:$main_3,$bgHover:$main_3,$txtHover:$main_4) {
+    cursor: pointer;
+    padding: 33px 25px;
+    line-height: 19px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 2.22222px;
+    margin: 0 auto;
+    position: relative;
+    display: block;
+    background-color: $bgColor;
+    color: $txtColor;
+    width: fit-content;
+    overflow: hidden;
+    border: 2px solid $bgColor;
+    background: $bgHover;
+
+    &::before {
+        @include pseudo();
+        background: $bgColor;
+        width: 100%;
+        transition: transform 0.4s;
+    }
+
+    .line {
+        letter-spacing: -2px;
+        margin-left: 15px;
+        color: $txtColor;
+    }
+
+    span {
+        position: relative;
+    }
+
+    &:hover::before {
+        transform: translate3d(130%, 0, 0) skew(40deg);
+    }
+
+    &:hover span {
+        transition: 0.4s;
+        color: $txtHover;
+    }
+    &:hover{
+        transform: scale(0.98);
+    }
+    @media screen and (min-width:1200px) {
+        @if ($size =='large') {
+            padding: 60px 30px;
+        }
+
+        @else {
+            padding: 30px 24px;
+        }
+
+        font-size: 16px;
+    }
+}
+
+@mixin decoBall($right: 5px,$top:60%) {
+    content: "";
+    position: absolute;
+    transform: translateY(-50%);
+    top: $top;
+    right: $right;
+    height: 10px;
+    width: 10px;
+    border-radius: 50px;
+    background-color: #EE6C8A;
+}
+
+@mixin decoWavy($textColor: $main_4, $wavyColor: $main_5) {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 34px;
+    letter-spacing: 3.63636px;
+    color: $textColor;
+    text-align: center;
+    position: relative;
+    width: fit-content;
+    margin: 0 auto;
+    white-space: nowrap;
+    text-decoration-style: wavy;
+    text-decoration-line: underline;
+    text-decoration-thickness: 3px;
+    text-decoration-color: $wavyColor;
+    text-underline-offset: 10px;
+
+    &:before {
+        @include decoBall();
+    }
+    @media screen and (min-width:768px) {
+        font-size: 28px;
+    }
+}
+
+
+@mixin text($lineHight: 28px) {
+    font-size: 16px;
+    line-height: $lineHight;
+    letter-spacing: 1px;
+}
+
+@mixin center {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+}
+
+@mixin flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@mixin maxWidth($maxWidth: 1340px) {
+    max-width: $maxWidth;
+    margin: 0 auto;
+}
+
+@mixin bgImage($position:center) {
+    background-size: cover;
+    background-position: $position;
+    background-repeat: no-repeat;
+}
+
+@mixin pseudo($w: 100%, $h: 100%, $left: 0, $top: 0) {
+    content: "";
+    position: absolute;
+    width: $w;
+    height: $h;
+    left: $left;
+    top: $top;
+    display: block;
+}
